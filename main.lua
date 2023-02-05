@@ -1,9 +1,14 @@
 require('grid')
 require('game')
 
+score_sound = love.audio.newSource( 'sound/mario_power_up.mp3', 'static' )
+game_sound = love.audio.newSource( 'sound/love_yourself_8bits.mp3', 'stream' )
+
+
 function love.load()
-  interval = 20
-  add_apple()
+    love.audio.play(game_sound)
+    interval = 20
+    add_apple()
 end
 
 function love.draw()
