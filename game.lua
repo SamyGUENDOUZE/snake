@@ -66,9 +66,6 @@ function game_update()
         add_apple()
         tail_length = tail_length + 1
         table.insert(tail, {0,0})
-        if tail_length % 10 == 0 then
-            love.audio.play(score_sound)
-        end
     end
 
     -- partie qui gère les traversées du mur
