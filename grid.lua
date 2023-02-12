@@ -1,3 +1,5 @@
+-- code disponible directement dans la doc de löve2D.
+
 local cellSize  = 20 -- Width and height of cells.
 local gridLines = {}
 

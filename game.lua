@@ -4,6 +4,7 @@ state = GameStates.running
 
 sound_effect = love.audio.newSource("sound/mario_power_up.mp3", "static")
 background_music = love.audio.newSource("sound/love_yourself_8_bits.mp3", "stream")
+  
 
 local snake = {}
 snake.x = 20
@@ -37,14 +38,31 @@ function game_draw()
     love.graphics.setColor(love.math.colorFromBytes(0,100,0)) 
     love.graphics.rectangle('fill', snake.x*SIZE, snake.y*SIZE, SIZE, SIZE)
 
-    -- propriétés de la queue du serpent
+    -- changement de la couleur de la tête du serpent si on dépasse 50
+    if body_length >= 50 then
+        love.graphics.setColor(love.math.colorFromBytes(252, 220, 18)) 
+        love.graphics.rectangle('fill', snake.x*SIZE, snake.y*SIZE, SIZE, SIZE)
+    end
+    -- changement de la couleur de la tête du serpent si on dépasse 100
+    if body_length >= 100 then
+        love.graphics.setColor(love.math.colorFromBytes(15, 157, 232)) 
+        love.graphics.rectangle('fill', snake.x*SIZE, snake.y*SIZE, SIZE, SIZE)
+    end
+
+
+    -- propriétés du corps du serpent
     love.graphics.setColor(love.math.colorFromBytes(50,205,50))
     for _, v in ipairs(body) do
         love.graphics.rectangle('fill', v[1]*SIZE, v[2]*SIZE, SIZE, SIZE)
+        -- changement de couleur du serpent si on dépasse 50
+        if body_length >= 50 then
+            love.graphics.setColor(love.math.colorFromBytes(255, 127, 0))
+            love.graphics.rectangle('fill', v[1]*SIZE, v[2]*SIZE, SIZE, SIZE)
+        end  
     end
 
     -- propriétés de la pomme
-    love.graphics.setColor(love.math.colorFromBytes(255,0,0)) 
+    love.graphics.setColor(love.math.colorFromBytes(255,0,0))
     love.graphics.rectangle('fill', apple.x*SIZE, apple.y*SIZE, SIZE, SIZE)
     
     -- propriétés de l'affichage du score

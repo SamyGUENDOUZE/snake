@@ -26,10 +26,12 @@ function love.update()
         interval = 20
       elseif body_length > 5 and body_length <= 10 then 
         interval = 15
-      elseif body_length > 10 and body_length <= 15 then
+      elseif body_length > 10 and body_length <= 25 then
         interval = 10
-      else
+      elseif body_length > 25 and body_length <= 50 then
         interval = 5
+      else
+        interval = 3
       end
     end
   end
